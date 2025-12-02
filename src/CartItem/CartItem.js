@@ -50,6 +50,7 @@ module.exports = class CartItem {
         return this.#quantity * this.#price;
     }
     //endregion public methods
+    //endregion public methods
 
     //region private methods
     set #articleId(value) {
@@ -61,15 +62,31 @@ module.exports = class CartItem {
     }
 
     #validateArticleId(articleId) {
-        //TODO Implement this method
+        if (articleId >= 1) {
+            return articleId;
+        }
+        else {
+            throw new InvalidArticleIdException();
+        }
     }
 
     #validateQuantity(quantity) {
-        //TODO Implement this method
+        if (quantity >= 1) {
+            return quantity;
+        }
+        else {
+            throw new InvalidQuantityException();
+        }
     }
 
     #validatePrice(price) {
-        //TODO Implement this method
+        if (price >= 10) {
+            return price;
+        }
+        else {
+            throw new InvalidPriceException();
+        }
+
     }
     //endregion private methods
 }
